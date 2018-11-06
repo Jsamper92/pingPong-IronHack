@@ -12,14 +12,14 @@ function Game() {
 
 
 
-    this.player1 = new Player(20, this.height / 2.3, 0, 80);
-    this.player2 = new Player(this.width - 20, this.height / 2.3, 0, 80);
+    this.player1 = new Player(40, this.height / 2.3, 0, 80);
+    this.player2 = new Player(this.width - 40, this.height / 2.3, 0, 80);
 
 
 
     this.ball = new Ball(100, 100, 0, 0, 2 * Math.PI);
     this.ball.x = this.width / 2;
-    this.ball.y = this.height / 2;
+
 
     this.ball.x += this.ball.vx;
     this.ball.y += this.ball.vy;
@@ -31,16 +31,33 @@ Game.prototype.clear = function() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 }
 
-Game.prototype.move = function() {
-    this.ball.move();
-    if (this.ball.x >= this.width || this.ball.x - this.ball.radius < 0) {
+
+Game.prototype.colission = function() {
+
+    // if (this.ball.x + this.ball.radius >= this.canvas.width || this.ball.x - this.ball.radius < 0 /* || this.ball.x >= this.player1.width */ ) {
+    //     this.ball.vx *= -1;
+    // }
+
+    if (this.ball.x - this.ball.radius < this.player1.x + this.player1.width && this.ball.y + this.ball.radius > this.player1.y && this.ball.y - this.ball.radius < this.player1.y + this.player1.height) {
         this.ball.vx *= -1;
     }
 
-    if (this.ball.y >= this.height || this.ball.y - this.ball.radius < 0) {
+    if (this.ball.x + this.ball.radius > this.player2.x - this.player2.width && this.ball.y + this.ball.radius > this.player2.y && this.ball.y - this.ball.radius < this.player2.y + this.player2.height) {
+        this.ball.vx *= -1;
+    }
+
+
+    if (this.ball.y >= this.canvas.height || this.ball.y - this.ball.radius < 0) {
         this.ball.vy *= -1;
     }
+
+
 }
+
+
+
+
+
 
 Game.prototype.draw = function() {
 
@@ -72,12 +89,11 @@ Game.prototype.setListeners = function() {
                 break;
             case UP_KEY:
                 //this.player2.y -= this.player2.vy;
-                this.player2.y = Math.max(0, this.player2.y - 60);
+                this.player2.y = Math.max(0, this.player2.y - 70);
                 break;
             case DOWN_KEY:
-                this.player2.y += this.player2.vy;
+                //this.player2.y += this.player2.vy;
                 this.player2.y = Math.min(this.height - this.player2.height, this.player2.y + 70);
-
                 break;
             default:
                 break;
@@ -91,7 +107,8 @@ Game.prototype.start = function() {
     setInterval(function() {
         this.setListeners();
         this.clear();
-        this.move();
+        this.ball.move();
+        this.colission();
         this.draw();
 
     }.bind(this), 1000 / this.fps)

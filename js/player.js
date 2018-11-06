@@ -2,7 +2,7 @@ function Player(x, y, vx, vy) {
     this.ctx = canvas.getContext("2d");
     this.x = x;
     this.y = y;
-    this.width = 2;
+    this.width = 5;
     this.height = 80;
 
     this.vx = vx;
