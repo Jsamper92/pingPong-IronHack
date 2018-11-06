@@ -10,12 +10,11 @@ function Player(x, y, vx, vy) {
 
     this.score = 0;
 
-
-
 }
 
 Player.prototype.draw = function() {
     this.ctx.beginPath();
+    this.ctx.fillStyle = "white";
     this.ctx.fillRect(this.x, this.y, this.width, this.height)
     this.ctx.closePath();
 

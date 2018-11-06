@@ -10,11 +10,11 @@ function Game() {
     this.height = canvas.height;
     this.fps = 60;
 
-    this.ctx.fillStyle = "white";
+
 
     this.player1 = new Player(20, this.height / 2.3, 0, 80);
     this.player2 = new Player(this.width - 20, this.height / 2.3, 0, 80);
-    this.player1.y = this.player1.vy;
+
 
 
     this.ball = new Ball(100, 100, 0, 0, 2 * Math.PI);
@@ -61,17 +61,23 @@ Game.prototype.setListeners = function() {
         event.preventDefault();
         switch (event.keyCode) {
             case KEY_UP:
-                this.player1.y -= this.player1.vy;
+                debugger
+                //this.player1.y -= this.player1.vy;
+                this.player1.y = Math.max(0, this.player1.y - 60);
                 break;
 
             case KEY_DOWN:
-                this.player1.y += this.player1.vy;
+                //this.player1.y += this.player1.vy;
+                this.player1.y = Math.min(this.height - this.player1.height, this.player1.y + 70);
                 break;
             case UP_KEY:
-                this.player2.y -= this.player2.vy;
+                //this.player2.y -= this.player2.vy;
+                this.player2.y = Math.max(0, this.player2.y - 60);
                 break;
             case DOWN_KEY:
                 this.player2.y += this.player2.vy;
+                this.player2.y = Math.min(this.height - this.player2.height, this.player2.y + 70);
+
                 break;
             default:
                 break;
