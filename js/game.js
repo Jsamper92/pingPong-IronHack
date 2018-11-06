@@ -43,11 +43,17 @@ Game.prototype.colission = function() {
     //     this.ball.vx *= -1;
     // }
 
-    if (this.ball.x - this.ball.radius < this.player1.x + this.player1.width && this.ball.y + this.ball.radius > this.player1.y && this.ball.y - this.ball.radius < this.player1.y + this.player1.height) {
+    if (this.ball.x - this.ball.radius < this.player1.x + this.player1.width &&
+        this.ball.y + this.ball.radius > this.player1.y &&
+        this.player1.x - this.player1.width > this.ball.x &&
+        this.ball.y - this.ball.radius < this.player1.y + this.player1.height) {
         this.ball.vx *= -1;
     }
 
-    if (this.ball.x + this.ball.radius > this.player2.x - this.player2.width && this.ball.y + this.ball.radius > this.player2.y && this.ball.y - this.ball.radius < this.player2.y + this.player2.height) {
+    if (this.ball.x + this.ball.radius > this.player2.x &&
+        this.player2.x + this.player2.width > this.ball.x &&
+        this.ball.y + this.ball.radius > this.player2.y &&
+        this.ball.y - this.ball.radius < this.player2.y + this.player2.height) {
         this.ball.vx *= -1;
     }
 
@@ -79,8 +85,10 @@ Game.prototype.draw = function() {
     //pelota
     this.ball.draw();
 
+    console.log(this.ball.x)
+
     //marcador
-    debugger
+    //debugger
     this.marcador1.draw();
     this.marcador2.draw();
 
