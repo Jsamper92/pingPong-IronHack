@@ -12,8 +12,8 @@ function Game() {
 
 
 
-    this.player1 = new Player(40, this.height / 2.3, 0, 80);
-    this.player2 = new Player(this.width - 40, this.height / 2.3, 0, 80);
+    this.player1 = new Player(40, this.height / 2.3, 0, 80, 0);
+    this.player2 = new Player(this.width - 40, this.height / 2.3, 0, 80, 0);
 
 
 
@@ -23,6 +23,11 @@ function Game() {
 
     this.ball.x += this.ball.vx;
     this.ball.y += this.ball.vy;
+
+    this.marcador1 = new Marcador(0, 10);
+    this.marcador2 = new Marcador(0, 870);
+
+
 
     this.setListeners();
 }
@@ -52,7 +57,11 @@ Game.prototype.colission = function() {
     }
 
 
+
+
 }
+
+
 
 
 
@@ -67,8 +76,13 @@ Game.prototype.draw = function() {
     this.player1.draw();
     this.player2.draw();
 
-    // //pelota
+    //pelota
     this.ball.draw();
+
+    //marcador
+    debugger
+    this.marcador1.draw();
+    this.marcador2.draw();
 
     this.ctx.closePath();
 }
@@ -109,6 +123,7 @@ Game.prototype.start = function() {
         this.clear();
         this.ball.move();
         this.colission();
+
         this.draw();
 
     }.bind(this), 1000 / this.fps)
