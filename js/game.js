@@ -1,11 +1,3 @@
-//Controls player1
-var KEY_UP = 87;
-var KEY_DOWN = 83;
-
-//Controls player2
-var UP_KEY = 38;
-var DOWN_KEY = 40;
-
 var marcadorPlayer1 = 0;
 var marcadorPlayer2 = 0;
 
@@ -37,6 +29,10 @@ function Game() {
 
 
     this.setListeners();
+}
+
+Game.prototype.moveBall = function() {
+    MoveBall.move(this.x, this.y, this.vx, this.vy);
 }
 Game.prototype.colission = function() {
     CollisionChecker.check(this.player1, this.player2, this.ball);
@@ -82,17 +78,9 @@ Game.prototype.reset = function() {
             } else {
                 this.ball = 0;
             }
-
-
         }
-
     }
 }
-
-
-
-
-
 
 
 Game.prototype.draw = function() {
@@ -119,33 +107,9 @@ Game.prototype.draw = function() {
 Game.prototype.setListeners = function() {
     document.onkeydown = function(event) {
         //todo: consider adding a KeyboardManager object with a .manage(event, player1, player) method
-
-        event.preventDefault();
-        switch (event.keyCode) {
-            case KEY_UP:
-                debugger
-                //this.player1.y -= this.player1.vy;
-                this.player1.y = Math.max(0, this.player1.y - 60);
-                break;
-
-            case KEY_DOWN:
-                //this.player1.y += this.player1.vy;
-                this.player1.y = Math.min(this.height - this.player1.height, this.player1.y + 70);
-                break;
-            case UP_KEY:
-                //this.player2.y -= this.player2.vy;
-                this.player2.y = Math.max(0, this.player2.y - 70);
-                break;
-            case DOWN_KEY:
-                //this.player2.y += this.player2.vy;
-                this.player2.y = Math.min(this.height - this.player2.height, this.player2.y + 70);
-                break;
-            default:
-                break;
-        }
+        KeyboardManager.manage(event, this.player1, this.player2, this.height);
     }.bind(this)
 }
-
 
 
 Game.prototype.start = function() {

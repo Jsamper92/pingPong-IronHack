@@ -1,8 +1,8 @@
-function Ball(x, y, vx, vy, radius) {
-    this.canvas = document.getElementById("canvas");
+function Ball(x, y, vx, vy, radius, width, height) {
+    this.canvas = this.canvas;
     this.ctx = canvas.getContext("2d");
-    this.x = x;
-    this.y = y;
+    this.x = 100;
+    this.y = 100;
     this.vx = 5;
     this.vy = 5;
     this.radius = radius;
@@ -13,7 +13,7 @@ function Ball(x, y, vx, vy, radius) {
 }
 //borramos rastro pelota
 Ball.prototype.clear = function() {
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    this.ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
 //dibujamos pelota
@@ -31,13 +31,13 @@ Ball.prototype.move = function() {
 }
 
 
-// Ball.prototype.colission = function() {
-//     if (this.x >= this.width || this.x - this.radius < 0) {
-//         this.vx *= -1;
-//     }
+Ball.prototype.colission = function() {
+    if (this.x >= this.width || this.x - this.radius < 0) {
+        this.vx *= -1;
+    }
 
 
-//     if (this.y >= this.height || this.y - this.radius < 0) {
-//         this.vy *= -1;
-//     }
-// }
+    if (this.y >= this.height || this.y - this.radius < 0) {
+        this.vy *= -1;
+    }
+}
