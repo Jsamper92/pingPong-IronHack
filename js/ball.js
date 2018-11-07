@@ -9,26 +9,29 @@ function Ball(x, y, vx, vy, radius, width, height) {
 
     this.width = this.with;
     this.height = this.height;
-
 }
 //borramos rastro pelota
+
 Ball.prototype.clear = function() {
-    this.ctx.clearRect(0, 0, canvas.width, canvas.height);
+        this.ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+    //dibujamos pelota
+Ball.prototype.draw = function() {
+    this.ctx.beginPath();
+    this.ctx.fillStyle = "white";
+    this.ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
+    this.ctx.fill();
+    this.ctx.closePath();
 }
 
-//dibujamos pelota
-Ball.prototype.draw = function() {
-        this.ctx.beginPath();
-        this.ctx.fillStyle = "white";
-        this.ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
-        this.ctx.fill();
-        this.ctx.closePath();
-    }
-    //movimiento pelota
+
+//movimiento pelota
 Ball.prototype.move = function() {
     this.x -= this.vx;
     this.y -= this.vy;
 }
+
+
 
 
 Ball.prototype.colission = function() {
