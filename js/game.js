@@ -38,69 +38,21 @@ function Game() {
 
     this.setListeners();
 }
-
-//todo: consider refactor collision detection in a separate object as proposed
-// var CollisionChecker = {
-//     check: function(player1, player2, ball) {
-//         if (this.ball.x - this.ball.radius < this.player1.x + this.player1.width &&
-//             this.ball.y + this.ball.radius > this.player1.y &&
-//             this.ball.y - this.ball.radius < this.player1.y + this.player1.height) {
-//             this.ball.vx *= -1;
-//         }
-
-//         if (this.ball.x + this.ball.radius > this.player2.x &&
-//             this.ball.y + this.ball.radius > this.player2.y &&
-//             this.ball.y - this.ball.radius < this.player2.y + this.player2.height) {
-//             this.ball.vx *= -1;
-
-//         }
-
-//         if (this.ball.y >= this.canvas.height || this.ball.y - this.ball.radius < 0) {
-//             this.ball.vy *= -1;
-//         }
-//     }
-// }
-
-
-// Game.prototype.colission = function() {
-//     CollisionChecker.check(this.player1, this.player2, this.ball)
-
-
-// }
-
 Game.prototype.colission = function() {
-    if (this.ball.x - this.ball.radius < this.player1.x + this.player1.width &&
-        this.ball.y + this.ball.radius > this.player1.y &&
-        this.ball.y - this.ball.radius < this.player1.y + this.player1.height) {
-        this.ball.vx *= -1;
-    }
-
-    if (this.ball.x + this.ball.radius > this.player2.x &&
-        this.ball.y + this.ball.radius > this.player2.y &&
-        this.ball.y - this.ball.radius < this.player2.y + this.player2.height) {
-        this.ball.vx *= -1;
-
-    }
-
-    if (this.ball.y >= this.canvas.height || this.ball.y - this.ball.radius < 0) {
-        this.ball.vy *= -1;
-    }
-
+    CollisionChecker.check(this.player1, this.player2, this.ball);
 }
 
 
 
 Game.prototype.reset = function() {
 
-    //todo: consider adding a function instead of calling the *almost* same code twice
+    //todo: consider adding a function instead of calling the *almost* same code 
     if (this.player2.x + this.player2.width + 30 === this.ball.x) {
         this.ball.vx *= -1;
 
         this.ball.x = this.width / 2;
         marcadorPlayer1 += 1;
         this.marcador1.x = Number(marcadorPlayer1);
-
-
 
         if (this.marcador1.x === 2) {
             if (confirm("Jugador 1 ha ganado la partida. ¿Quieres volver a jugar?")) {
@@ -113,7 +65,6 @@ Game.prototype.reset = function() {
                 this.ball = 0;
             }
         }
-
     }
 
     if (this.player1.x - this.player1.width - 30 === this.ball.x) {
@@ -121,10 +72,6 @@ Game.prototype.reset = function() {
         this.ball.x = this.width / 2;
         marcadorPlayer2 += 1;
         this.marcador2.x = Number(marcadorPlayer2);
-
-
-
-
         if (this.marcador2.x === 2) {
             if (confirm("Jugador 2 ha ganado la partida. ¿Quieres volver a jugar?")) {
                 marcadorPlayer2 = 0
@@ -208,6 +155,7 @@ Game.prototype.start = function() {
 
         this.ball.move();
         this.ball.clear();
+
         this.colission();
         this.reset()
         this.draw();
