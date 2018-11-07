@@ -1,6 +1,6 @@
 function Marcador(x, y, value) {
     this.ctx = canvas.getContext("2d");
-    this.x = x;
+    this.x = 0;
     this.y = y;
     this.width = 40;
     this.height = 80;

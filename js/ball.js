@@ -1,5 +1,5 @@
 function Ball(x, y, vx, vy, radius) {
-    this.canvas = this.canvas;
+    this.canvas = document.getElementById("canvas");
     this.ctx = canvas.getContext("2d");
     this.x = x;
     this.y = y;
@@ -31,13 +31,13 @@ Ball.prototype.move = function() {
 }
 
 
-Ball.prototype.colission = function() {
-    if (this.x >= this.width || this.x - this.radius < 0) {
-        this.vx *= -1;
-    }
+// Ball.prototype.colission = function() {
+//     if (this.x >= this.width || this.x - this.radius < 0) {
+//         this.vx *= -1;
+//     }
 
 
-    if (this.y >= this.height || this.y - this.radius < 0) {
-        this.vy *= -1;
-    }
-}
+//     if (this.y >= this.height || this.y - this.radius < 0) {
+//         this.vy *= -1;
+//     }
+// }

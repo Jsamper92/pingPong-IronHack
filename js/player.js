@@ -1,4 +1,4 @@
-function Player(x, y, vx, vy, score) {
+function Player(x, y, vx, vy) {
     this.ctx = canvas.getContext("2d");
     this.x = x;
     this.y = y;
@@ -8,7 +8,6 @@ function Player(x, y, vx, vy, score) {
     this.vx = vx;
     this.vy = vy;
 
-    this.score = score;
 
 }
 
