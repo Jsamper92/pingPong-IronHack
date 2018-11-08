@@ -2,13 +2,14 @@ body {
     font-family: 'Spicy Rice', cursive;
     background: url(../image/pingPong.jpg) no-repeat;
     background-size: cover;
-    padding: 30px 0;
+    padding: 10px 0;
 }
 
 #canvas {
     background-color: #469405;
     display: flex;
-    margin-top: 150px;
+    margin-top: 100px;
+    padding-right: 10px;
     margin-bottom: 10px;
     border: 2px solid white;
 }
