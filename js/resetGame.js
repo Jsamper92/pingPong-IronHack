@@ -1,5 +1,5 @@
 var ResetGame = {
-    reset: function(player1, player2, ball, marcador1, marcador2, intervalID, width) {
+    reset: function(player1, player2, ball, marcador1, marcador2, intervalID, width, start, game) {
         if (player2.x + player2.width + 30 === ball.x) {
             ball.vx *= -1;
 
@@ -9,18 +9,20 @@ var ResetGame = {
 
             if (marcador1.x === 2) {
                 if (confirm("Jugador 1 ha ganado la partida. ¿Quieres volver a jugar?")) {
-
                     marcadorPlayer1 = 0
                     clearInterval(intervalID);
                     marcador1 = new Marcador(0, 15);
                     marcador2 = new Marcador(0, 865);
-                    start();
+                    game.start();
                 } else {
                     clearInterval(intervalID);
                     ball = 0;
+                    console.log("hola")
+
                 }
             }
-        } else if (player1.x - player1.width - 30 === ball.x) {
+        }
+        if (player1.x - player1.width - 30 === ball.x) {
             ball.vx *= -1;
             ball.x = width / 2;
             marcadorPlayer2 += 1;
@@ -31,10 +33,11 @@ var ResetGame = {
                     clearInterval(intervalID);
                     marcador1 = new Marcador(0, 15);
                     marcador2 = new Marcador(0, 865);
-                    start();
+                    game.start();
                 } else {
                     clearInterval(intervalID);
                     ball = 0;
+                    console.log("hola")
                 }
             }
         }
