@@ -15,6 +15,8 @@ function Game() {
     this.player1 = new Player(40, this.height / 2.3, 0, 80, 0);
     this.player2 = new Player(this.width - 40, this.height / 2.3, 0, 80, 0);
 
+    this.line = new Player(this.width / 2, 0);
+
 
     this.ball = new Ball(100, 100, 0, 0, 2 * Math.PI);
     this.ball.x = this.width / 2;
@@ -79,6 +81,8 @@ Game.prototype.reset = function() {
 }
 Game.prototype.draw = function() {
     this.ctx.beginPath();
+    //linea de fondo
+    this.line.drawLine();
     //jugadores
     this.player1.draw();
     this.player2.draw();

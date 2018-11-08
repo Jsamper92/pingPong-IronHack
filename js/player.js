@@ -18,3 +18,11 @@ Player.prototype.draw = function() {
     this.ctx.closePath();
 
 }
+
+
+Player.prototype.drawLine = function() {
+    this.ctx.beginPath();
+    this.ctx.fillStyle = "white";
+    this.ctx.fillRect(this.x, this.y, this.width / 2, 561)
+    this.ctx.closePath();
+}

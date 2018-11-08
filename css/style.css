@@ -1,21 +1,31 @@
+body {
+    font-family: 'Spicy Rice', cursive;
+    background: url(../image/pingPong.jpg) no-repeat;
+    background-size: cover;
+    padding: 40px 0;
+}
+
 #canvas {
-    background-color: #353535;
+    background-color: #469405;
     display: flex;
-    margin-left: 300px;
     margin-top: 150px;
     margin-bottom: 10px;
+    border: 2px solid white;
 }
 
 div {
     float: left;
-    margin-left: 90px;
+    margin: 10px;
 }
 
 div h1 {
-    margin-left: 15px;
+    font-size: 90px;
+    padding-right: 200px;
+    margin-left: 10px;
 }
 
-div button {
-    margin-top: 50px;
+.btn.btn-danger {
+    margin-left: 20px;
     width: 150px;
+    color: black;
 }

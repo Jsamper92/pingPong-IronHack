@@ -9,6 +9,7 @@ function Ball(x, y, vx, vy, radius, width, height) {
 
     this.width = this.with;
     this.height = this.height;
+    
 }
 //borramos rastro pelota
 
