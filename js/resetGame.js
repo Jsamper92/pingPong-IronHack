@@ -13,6 +13,9 @@ var ResetGame = {
                     marcadorPlayer1 = 0;
                     marcador1.x = marcadorPlayer1;
 
+                    marcadorPlayer2 = 0;
+                    marcador2.x = marcadorPlayer2;
+
                     marcador1 = new Marcador(0, 15);
                     marcador2 = new Marcador(0, 865);
                     game.start();
@@ -31,8 +34,11 @@ var ResetGame = {
             if (marcador2.x === 2) {
                 if (confirm("Jugador 2 ha ganado la partida. ¿Quieres volver a jugar?")) {
                     clearInterval(intervalID);
-                    marcadorPlayer1 = 0;
+                    marcadorPlayer2 = 0;
                     marcador2.x = marcadorPlayer2;
+
+                    marcadorPlayer1 = 0;
+                    marcador1.x = marcadorPlayer1;
 
                     marcador1 = new Marcador(0, 15);
                     marcador2 = new Marcador(0, 865);
