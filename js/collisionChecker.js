@@ -1,5 +1,5 @@
 var CollisionChecker = {
-    check: function(player1, player2, ball, audio) {
+    check: function(player1, player2, ball, audio, audioDos) {
         if (ball.x - ball.radius < player1.x + player1.width &&
             ball.y + ball.radius > player1.y &&
             ball.y - ball.radius < player1.y + player1.height) {
@@ -12,7 +12,7 @@ var CollisionChecker = {
         if (ball.x + ball.radius > player2.x &&
             ball.y + ball.radius > player2.y &&
             ball.y - ball.radius < player2.y + player2.height) {
-            audio.play();
+            audioDos.play();
             ball.vx *= -1;
 
 

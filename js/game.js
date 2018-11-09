@@ -11,7 +11,8 @@ function Game() {
     this.player1 = new Player(40, this.height / 2.3, 0, 80, 0);
     this.player2 = new Player(this.width - 40, this.height / 2.3, 0, 80, 0);
 
-    this.audio = new Audio("./sound/tennisserve.mp3");
+    this.audio = new Audio("./sound/GritosDeTenista.mp3");
+    this.audioDos = new Audio("./sound/GritosTenistasPlayer2.mp3")
 
     this.line = new Player(this.width / 2, 0);
 
@@ -27,7 +28,7 @@ function Game() {
     this.setListeners();
 }
 Game.prototype.colission = function() {
-    CollisionChecker.check(this.player1, this.player2, this.ball, this.audio);
+    CollisionChecker.check(this.player1, this.player2, this.ball, this.audio, this.audioDos);
 }
 Game.prototype.reset = function() {
     ResetGame.reset(this.player1, this.player2, this.ball, this.marcador1, this.marcador2, this.intervalID, this.width, this.start, this);
