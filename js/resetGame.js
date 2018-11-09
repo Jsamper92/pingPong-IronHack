@@ -9,16 +9,17 @@ var ResetGame = {
 
             if (marcador1.x === 2) {
                 if (confirm("Jugador 1 ha ganado la partida. ¿Quieres volver a jugar?")) {
-                    marcadorPlayer1 = 0
                     clearInterval(intervalID);
+                    marcadorPlayer1 = 0;
+                    marcador1.x = marcadorPlayer1;
+
                     marcador1 = new Marcador(0, 15);
                     marcador2 = new Marcador(0, 865);
                     game.start();
+                    //marcadorPlayer1.x = Number(marcadorPlayer1 = 0)
                 } else {
                     clearInterval(intervalID);
                     ball = 0;
-                    console.log("hola")
-
                 }
             }
         }
@@ -29,15 +30,18 @@ var ResetGame = {
             marcador2.x = Number(marcadorPlayer2);
             if (marcador2.x === 2) {
                 if (confirm("Jugador 2 ha ganado la partida. ¿Quieres volver a jugar?")) {
-                    marcadorPlayer2 = 0
                     clearInterval(intervalID);
+                    marcadorPlayer1 = 0;
+                    marcador2.x = marcadorPlayer2;
+
                     marcador1 = new Marcador(0, 15);
                     marcador2 = new Marcador(0, 865);
                     game.start();
+                    //marcadorPlayer2.x = Number(marcadorPlayer2 = 0)
                 } else {
                     clearInterval(intervalID);
                     ball = 0;
-                    console.log("hola")
+
                 }
             }
         }
